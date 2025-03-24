@@ -1,6 +1,7 @@
 const canvas = document.getElementById('telaJogo');
 const ctx = canvas.getContext('2d');
 let gameOver = false;
+let record = 0;
 
 const teclasPressionadas = {
     KeyW: false,
@@ -19,12 +20,6 @@ document.addEventListener('keydown', (e) => {
         teclasPressionadas[e.code] = true;
     }
 });
-
-document.addEventListener('click', () => {
-    if (gameOver == true) {
-        location.reload();
-    }
-})
 
 class Entidade {
     constructor(x, y, largura, altura) {
@@ -87,6 +82,10 @@ class Cobra extends Entidade {
     get pontos(){
         return this.#pontos
     }
+
+    restPontos() {
+        this.#pontos = 0;
+    }
 }
 
 class Comida extends Entidade {
@@ -111,9 +110,14 @@ function loop() {
         cobra.verificarParede()
         cobra.verificarColisao(comida)
 
+        if (cobra.pontos > record) {
+            record = cobra.pontos;
+        }
+
         ctx.fillStyle = 'black'
         ctx.font = '20px Arial'
         ctx.fillText('Pontuação: ' + cobra.pontos, 10, 20)
+        ctx.fillText('Recorde: ' + record, 10, 50)
 
         requestAnimationFrame(loop)
     }else{
@@ -122,4 +126,17 @@ function loop() {
         ctx.fillText('Game Over!', canvas.width / 2 - 80, canvas.height / 2)
     }
 }
+
 loop()
+
+document.addEventListener('click', () => {
+    if (gameOver == true) {
+        gameOver = false
+        cobra.x = 100
+        cobra.y = 200
+        comida.x = Math.random() * (canvas.width - 10)
+        comida.y = Math.random() * (canvas.height - 10)
+        cobra.resetarPontos()
+        loop()
+    }
+});
