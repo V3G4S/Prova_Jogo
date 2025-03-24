@@ -83,6 +83,10 @@ class Cobra extends Entidade {
         comida.y = Math.random()*canvas.height-10
         this.#pontos += 1
     }
+
+    get pontos(){
+        return this.#pontos
+    }
 }
 
 class Comida extends Entidade {
@@ -109,7 +113,7 @@ function loop() {
 
         ctx.fillStyle = 'black'
         ctx.font = '20px Arial'
-        ctx.fillText('Pontuação: ' + this.pontos, 10, 20)
+        ctx.fillText('Pontuação: ' + cobra.pontos, 10, 20)
 
         requestAnimationFrame(loop)
     }else{
