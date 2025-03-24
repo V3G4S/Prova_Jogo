@@ -3,8 +3,8 @@
 O famoso "***Jogo da Cobrinha***" feito em Canvas, do HTML5.
 
 O jogo infelizmente não contém a função do **aumento do tamanho da cobra**, mas ainda sim é jogável. Contendo as funções de:
-**colisão** (_tanto com a fruta, tanto com as bordas_),
-**pontuações** máximas e por jogo,
+**colisão** (_tanto com a fruta, tanto com as bordas_),\
+**pontuações** máximas e por jogo,\
 além da tela de **game over** (_que reseta a pontuação e o jogo, após o clique na tela_).
 
 <ins>Jogo localizado para clone na branch 1.0</ins>
