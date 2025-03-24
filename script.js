@@ -22,18 +22,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-document.addEventListener('click', () => {
-    if (gameOver) {
-        gameOver = false;
-        cobra.x = 100;
-        cobra.y = 200;
-        comida.x = Math.random() * (canvas.width - 10);
-        comida.y = Math.random() * (canvas.height - 10);
-        cobra.resetarPontos();
-        loop();
-    }
-});
-
 class Entidade {
     constructor(x, y, largura, altura) {
         this.x = x
@@ -144,12 +132,12 @@ loop()
 
 document.addEventListener('click', () => {
     if (gameOver) {
-        gameOver = false;
-        cobra.x = 100;
-        cobra.y = 200;
-        comida.x = Math.random() * (canvas.width - 10);
-        comida.y = Math.random() * (canvas.height - 10);
-        cobra.resetarPontos();
+        gameOver = false
+        cobra.x = 100
+        cobra.y = 200
+        comida.x = Math.random() * (canvas.width - 10)
+        comida.y = Math.random() * (canvas.height - 10)
+        cobra.resetarPontos()
         loop();
     }
 });
