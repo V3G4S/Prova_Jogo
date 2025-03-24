@@ -40,6 +40,7 @@ class Entidade {
 }
 
 class Cobra extends Entidade {
+    #pontos = 0
     constructor(x, y, largura, altura) {
         super(x, y, largura, altura)
     }
@@ -80,6 +81,7 @@ class Cobra extends Entidade {
     #houveColisao(comida){
         comida.x = Math.random()*canvas.width-10
         comida.y = Math.random()*canvas.height-10
+        this.#pontos += 1
     }
 }
 
@@ -104,6 +106,11 @@ function loop() {
         comida.desenhar()
         cobra.verificarParede()
         cobra.verificarColisao(comida)
+
+        ctx.fillStyle = 'black'
+        ctx.font = '20px Arial'
+        ctx.fillText('Pontuação: ' + this.pontos, 10, 20)
+
         requestAnimationFrame(loop)
     }else{
         ctx.fillStyle = 'red'
